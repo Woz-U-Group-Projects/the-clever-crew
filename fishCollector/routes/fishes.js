@@ -90,7 +90,22 @@ router.get('/:fishId', (req, res, next) => {
         }
     })
 })
-    
+
+//update fish... 
+
+router.put('/fish/:id', function(req,res,next){
+    let fishId = parseInt(req.params.id);
+    models.fish
+    .update(req.body, {where: { fish_id: fishId}})
+    .then(result => res.redirect('/fishes' + fishId))
+    .catch(err => {
+        res.status(400);
+        res.send('problem updating fish');
+    });
+});
+
+
+    //delete fish
  router.delete('/fishes/:id', function (req, res, next){
      let fishId = parseInt (req,params.id);
      models.fish 
