@@ -40,7 +40,7 @@ var fish = new Fish({
     fishImage: req.file.path,
     location: req.body.name,
     beer: req.body.name
-})
+    })
 });
 
 //get images
@@ -69,4 +69,40 @@ router.get('/', (req, res, next) =>{
     })
 });
 
+//find a fish by ID... change to find by name if possible
+router.get('/:fishId', (req, res, next) => {
+    const id = req.params.fishId;
+    Fish.findById(id)
+    .select('name fishImage _id location beer')
+    .exec()
+    .then(doc => {
+        if (doc) {
+            res.status(200).json({
+                fish: doc,
+                request: {
+                    type: 'GET',
+                    url: 'http://localhost:3000/fishes'
+                }
+            });
+        } else {
+            res.status(404)
+            res.send('Fish Not Found');
+        }
+    })
+})
+    
+ router.delete('/fishes/:id', function (req, res, next){
+     let fishId = parseInt (req,params.id);
+     models.fish 
+     .destroy ({
+         where: {fish_id: fishId}
+     })
+     .then(result => res.redirect('/fishes'))
+     .catch(err => {
+         res.status(400);
+         res.send('fish won`t delete');
+     })
+ })     
+
+ 
 module.exports = router;
