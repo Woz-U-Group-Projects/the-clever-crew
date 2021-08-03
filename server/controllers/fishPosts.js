@@ -8,4 +8,4 @@ export const getFishes = (req, res) => {
 
 export const createPost = (req, res) => {
     res.send('this is a post')
-}
+} //Great Job
