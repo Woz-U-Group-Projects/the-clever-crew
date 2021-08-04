@@ -5,7 +5,7 @@ import cors from 'cors';
 import postRoutes from './routes/fishPosts.js';
 
 const app = express();
-app.use('/fishPosts', postRoutes);
+app.use('/fishPosts', postRoutes); // will need to update or at an endpoint that has params for a specific user
 
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));

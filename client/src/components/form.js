@@ -1,19 +1,29 @@
-import react from 'react';
+import React, { useState, useEffect } from 'react';
+//need the filebase64 import
 
-const App = () => {
+
+
+
+
+
+const Form = () => {
+   
+       // need to set up redux with actions and reducers
+            
+    
+    const clearFields = () => {
+        setCurrentId(null);
+        setPostData({name: '', location: '', bair: '', beer: '', selectedFile: ''}); //set data as an empty 'string'
+    }
+
     return (
-        <>
         <div>
-            <h1>Fish Colector</h1>
-        </div>
-        <div>
-            {/* not ready to use form as a component. see components/form */}
             <form > 
                 <h1 >Add a Fish to Collection</h1>                                                                        
                     <input placeholder="Name"/>
                     <input placeholder="Location"/>
-                    <input placeholder="What bait did you use?"/>
-                    <input placeholder="Beer you were drinking?"/>
+                    <input placeholder="bait"/>
+                    <input placeholder="beer"/>
                         <div>
                             <button>Upload Picture</button>
                         </div>
@@ -21,8 +31,7 @@ const App = () => {
                         <button>Clear</button>
             </form>
         </div>
-        </>
     );
 }
 
-export default App;
+export default Form;

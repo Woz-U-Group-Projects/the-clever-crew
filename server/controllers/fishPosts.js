@@ -1,3 +1,4 @@
+import Mongoose from 'mongoose';
 import PostInfo from '../models/postInfo.js'; // from model schema created 
 
 
@@ -22,4 +23,27 @@ const newPost = new PostInfo(post);
     } catch (error) {
         res.status(409).json({ message: error.message }); //cannot not complete request
     }
+}
+
+export const updatePost = async (req, res) => {
+    const { id: _id } = req.params;
+    const post = req.body; //sent from the front end
+
+    if(!Mongoose.Types.ObjectId.isValid(_id)) //check if id is not valid ... need to import mongoose..
+    return res.status(404).send('No post with that id');
+
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, { ...post, _id }, {new: true}); //each post has to have it's own id spread...post then id..
+
+    res.json(updatedPost);
+}
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+    if(!Mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send('No post with that id');
+
+     await PostMessage.findByIdAndRemove(id);
+
+    res.json({ message: 'Post deleted successfully' });
 }
