@@ -3,10 +3,10 @@ import PostInfo from '../models/postInfo.js'; // from model schema created
 
 
 
-export const getFishPosts =  async (req, res) => {
+export const getPosts =  async (req, res) => {
     try {
-        const postMessages =  await PostInfo.find();
-        res.status(200).json(postMessages); //request has succeeded
+        const postInfo =  await PostInfo.find();
+        res.status(200).json(postInfo); //request has succeeded
     } catch (error) {
         res.status(404).json({ message: error.message }); //cannot find
     }
@@ -43,7 +43,7 @@ export const deletePost = async (req, res) => {
     if(!Mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send('No post with that id');
 
-     await PostMessage.findByIdAndRemove(id);
+     await PostInfo.findByIdAndRemove(id);
 
     res.json({ message: 'Post deleted successfully' });
 }

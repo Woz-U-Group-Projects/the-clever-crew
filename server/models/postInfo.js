@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 const postSchema = mongoose.Schema({
 name: String,
 location: String,
+size: String,
 bait: String,
 beer: String,
 selectedFile: String,  //for the image
