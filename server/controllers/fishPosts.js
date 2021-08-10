@@ -12,6 +12,7 @@ export const getPosts =  async (req, res) => {
     }
 }
 
+<<<<<<< HEAD
 export const createPost = async (req, res) => {
 const post = req.body;
 
@@ -47,3 +48,8 @@ export const deletePost = async (req, res) => {
 
     res.json({ message: 'Post deleted successfully' });
 }
+=======
+export const createPost = (req, res) => {
+    res.send('this is a post')
+} //Great Job
+>>>>>>> user-sign-up
