@@ -12,7 +12,6 @@ export const getPosts =  async (req, res) => {
     }
 }
 
-<<<<<<< HEAD
 export const createPost = async (req, res) => {
 const post = req.body;
 
@@ -33,7 +32,7 @@ export const updatePost = async (req, res) => {
     if(!Mongoose.Types.ObjectId.isValid(_id)) //check if id is not valid ... need to import mongoose..
     return res.status(404).send('No post with that id');
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, { ...post, _id }, {new: true}); //each post has to have it's own id spread...post then id..
+    const updatedPost = await PostInfo.findByIdAndUpdate(_id, { ...post, _id }, {new: true}); //each post has to have it's own id spread...post then id..
 
     res.json(updatedPost);
 }
@@ -42,14 +41,9 @@ export const deletePost = async (req, res) => {
     const { id } = req.params;
 
     if(!Mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send('No post with that id');
+    return res.status(404).send('No post with that ID');
 
      await PostInfo.findByIdAndRemove(id);
 
     res.json({ message: 'Post deleted successfully' });
 }
-=======
-export const createPost = (req, res) => {
-    res.send('this is a post')
-} //Great Job
->>>>>>> user-sign-up

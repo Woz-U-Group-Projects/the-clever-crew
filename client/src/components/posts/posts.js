@@ -4,8 +4,12 @@ import { Grid, LinearProgress } from '@material-ui/core';
 import Post from './post/post';
 
 
+
+
 const Posts = ({setCurrentId }) => {
     const posts = useSelector((state) => state.posts); // see reducers index.js
+    
+   
     
 
     console.log(posts);

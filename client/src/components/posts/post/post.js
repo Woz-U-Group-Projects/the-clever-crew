@@ -6,43 +6,47 @@ import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { deletePost } from '../../../actions/posts'
 
+import useStyles from './styles';
+
 
 
 const Post = ({ post, setCurrentId}) => {
     const dispatch = useDispatch();
+    const classes = useStyles();
+    
     
     return (
-        <Card>
-            <div>
-            <CardMedia  image={post.selectedFile} />
-            </div>
-            <div>
-                <Typography variant="h6">{post.name}</Typography>
-                <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
-            </div>
-
-            <div>
-                <Button style={{color:'lightblue'}} size="small" onClick={() => setCurrentId(post._id)}>
-                    <MoreHorizIcon fontSize="default"/>
-                </Button>
-            </div>
-
-            <div>
+        
+        <Card className={classes.card}>
+        <CardMedia className={classes.image} image={post.selectedFile} title={post.name}/>
+        <div className={classes.overlay}>
             
-            </div>
-            <CardContent>
-            <Typography  variant="h5" gutterBottom>{post.location}</Typography>
-            </CardContent>
-            <Typography  variant="body2" color="textSecondary" component="p">{post.bait}</Typography>
-            <CardActions>
-                    
-                <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
-                <DeleteIcon fontSize="small" />
-                Delete
-                </Button>
+            <Typography variant="h6"> Name: {post.name}</Typography>
+            <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+        </div>
+        
+        <CardContent>
+        <Typography className={classes.title} variant="h6"  gutterBottom>Location: {post.location} </Typography>
+        <Typography className={classes.title} variant="h6"  gutterBottom>Size: {post.size} </Typography>
+        <Typography className={classes.title} variant="h6"  gutterBottom>Bait Used: {post.bait} </Typography>
+        </CardContent>
 
-            </CardActions>
-        </Card>
+        <Typography className={classes.title} variant="body2" color="textSecondary" component="p">Beer you were drinking: {post.beer}</Typography>
+        <CardActions className={classes.cardActions}>
+            
+            <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
+            <DeleteIcon fontSize="small" />
+            Delete
+            </Button>
+            <Button size="small" onClick={() => setCurrentId(post._id)}>
+                <MoreHorizIcon fontSize="default"/>
+            </Button>
+
+        </CardActions>
+    </Card>
+
+            
+        
     );
 }
 
