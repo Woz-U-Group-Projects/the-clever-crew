@@ -48,6 +48,12 @@ const Form = ({ currentId, setCurrentId }) => {
                     <Button className={classes.button} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                     <Button variant="contained" color="warning" size="small" onClick={clearFields} fullWidth>Clear</Button>
             </form>
+                <div className={classes.img}>
+                <div className="img" align="center">
+                    <img src="NauticalStar.svg" height="50"/>
+                </div>
+            </div>
+
         </Paper>
     );
 }

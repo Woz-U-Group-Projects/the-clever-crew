@@ -7,13 +7,15 @@ export default makeStyles((theme) => ({
     },
   },
   paper: {
-    paddingTop: '5em',
+    paddingTop: '3em',
     padding: theme.spacing(2),
   },
   form: {
+  
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    
   },
   fileUpload: {
     width: '100%',
@@ -22,4 +24,7 @@ export default makeStyles((theme) => ({
   button: {
     marginBottom: 10,
   },
+  img: {
+    paddingTop: '1em'
+  }
 }));

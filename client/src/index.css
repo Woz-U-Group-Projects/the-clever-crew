@@ -1,0 +1,21 @@
+body {
+    /*background options*/ 
+    /* background-image: url(https://svgsilh.com/svg/1502472-2196f3.svg);   */
+    /* background-image: url(https://svgsilh.com/svg/2490061-2196f3.svg); */
+    /* background-image: url(https://svgsilh.com/svg/2482930-2196f3.svg); */
+    background-image: url(https://svgsilh.com/svg/305226-607d8b.svg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    
+}
+.img {
+
+    animation-name: spin;
+    animation-duration: 18000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+    @keyframes spin {
+        from {transform:rotate(0deg);}
+        to {transform:rotate(360deg);}
+    }
